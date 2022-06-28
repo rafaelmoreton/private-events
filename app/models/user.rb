@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :rememberable, :validatable
 
+  has_many :events, foreign_key: "creator_id"
+
   def email_required?
     false
   end
