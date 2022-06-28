@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
+  post 'events', to: 'events#create'
+  get 'events/new', to: 'events#new'
   get 'events/index', to: 'events#index'
+  get 'events/:id', to: 'events#show', as: :event
   get 'users/:id', to: 'users#show'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -1,5 +1,5 @@
 <h1>Events</h1>
-
+<div><%= link_to "Create Event", events_new_path %></div>
 <% @events.includes(:creator).each do |event| %>
     <p>Title: <%= event.title %></p>
     <p>Location: <%= event.location %></p>
