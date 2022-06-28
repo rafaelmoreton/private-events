@@ -1,6 +1,6 @@
 <h1>Events</h1>
 
-<% @events.each do |event| %>
+<% @events.includes(:creator).each do |event| %>
     <p>Title: <%= event.title %></p>
     <p>Location: <%= event.location %></p>
     <p>Creator: <%= event.creator.username %></p>
