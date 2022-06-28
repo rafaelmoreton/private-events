@@ -1,0 +1,6 @@
+<h1><%= @user.username %> events</h1>
+
+<% @user.events.each do |event| %>
+    <p>Title: <%= event.title %></p>
+    <p>Location: <%= event.location %></p>
+<% end %>
