@@ -1,7 +1,5 @@
 <h1>New Event</h1>
 
-<%= @event %>
-
 <%= form_with(model: @event) do |form| %>
   <% if @event.errors.any? %>
     <div style="color: red">
@@ -18,12 +16,22 @@
   <div>
     <%= form.label :title, style: "display: block" %>
     <%= form.text_field :title %>
-  </div>
+  </div> <br>
 
   <div>
     <%= form.label :location, style: "display: block" %>
-    <%= form.text_area :location %>
-  </div>
+    <%= form.text_field :location %>
+  </div> <br>
+
+    <div>
+    <%= form.label :date, style: "display: block" %>
+    <%= form.datetime_local_field :date, min: Date.today %>
+  </div> <br>
+
+    <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description, size: "40x12" %>
+  </div> <br>
 
   <div>
     <%= form.submit %>
