@@ -1,3 +1,5 @@
 <h1><%= @event.title %></h1>
-<p>Location: <%= @event.location %></p>
-<p>Creator: <%= @event.creator.username %></p>
+<p>Event from: <%= @event.creator.username %></p>
+<h3>Where: <%= @event.location %></h3>
+<h3>When: <%= @event.date %></h3>
+<h3>What: <%= @event.description %></h3>
