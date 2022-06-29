@@ -1,7 +1,13 @@
 <h1>Events</h1>
 <div><%= link_to "Create Event", events_new_path %></div>
 <% @events.includes(:creator).each do |event| %>
-    <p>Title: <%= event.title %></p>
-    <p>Location: <%= event.location %></p>
-    <p>Creator: <%= event.creator.username %></p>
+    <br>
+    <div style="border: 3px solid black; width: 500px">
+        <a style="display: block; text-decoration: none; color: black" href="<%= event_url(event.id) %>">
+            <div style="padding: 20px">
+                <h3 style="margin: 0 0 20px"><%= event.title %></h3>
+                <p style="margin: 0">Creator: <%= event.creator.username %></p>
+            </div>
+        </a>
+    </div>
 <% end %>
