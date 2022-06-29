@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  post 'invitations', to: 'invitations#create'
   post 'events', to: 'events#create'
   get 'events/new', to: 'events#new'
   get 'events/index', to: 'events#index'
