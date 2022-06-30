@@ -1,5 +1,8 @@
 <h1><%= @event.title %></h1>
 
+<%= button_to "Delete", @event, method: :delete %>
+<%= link_to "Edit", event_edit_path %>
+
 <%= form_with(model: @invitation, data: { turbo: false }) do |form| %>
   <% if @invitation.errors.any? %>
     <div style="color: red">
