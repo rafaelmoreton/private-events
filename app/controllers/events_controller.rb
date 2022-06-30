@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: %i[ new create ]
+  before_action :authenticate_user!, only: %i[ new create edit update destroy ]
+  before_action :assert_ownership, only: %i[ create edit update destroy ]
 
   def index
     @events = Event.all
@@ -50,5 +51,10 @@ class EventsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def event_params
     params.require(:event).permit(:title, :location, :date, :description)
+  end
+
+  def assert_ownership
+    @event = Event.find(params[:id])
+    redirect_to request.referrer if current_user.id != @event.creator_id
   end
 end
