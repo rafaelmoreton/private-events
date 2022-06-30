@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   delete 'events/:id', to: 'events#destroy', as: :event_destroy
   get 'events/:id/edit', to: 'events#edit', as: :event_edit
   patch 'events/:id', to: 'events#update'
-  get 'users/:id', to: 'users#show'
+  get 'users/:id', to: 'users#show', as: :user_show
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
