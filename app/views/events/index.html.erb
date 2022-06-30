@@ -1,12 +1,21 @@
 <h1>Events</h1>
-<div><%= link_to "Create Event", events_new_path %></div>
+<div><%= button_to "Create Event", events_new_path, method: :get, class: "create-button" %></div>
+
 <% @events.includes(:creator).each do |event| %>
-    <br>
-    <div style="border: 3px solid black; width: 500px">
-        <a style="display: block; text-decoration: none; color: black" href="<%= event_url(event.id) %>">
-            <div style="padding: 20px">
-                <h3 style="margin: 0 0 20px"><%= event.title %></h3>
-                <p style="margin: 0">Creator: <%= event.creator.username %></p>
+    <div class="event-item">
+        <a href="<%= event_url(event.id) %>">
+            <div class="link-grid">
+                <h3 class="link-grid-item">
+                    <%= event.title %>
+                </h3>
+                <p class="link-grid-item when-where">
+                    <b>When: </b><%= event.date %>
+                    <br>
+                    <b>Where: </b><%= event.location %>
+                </p>
+                <p class="creator">
+                    Creator: <%= event.creator.username %>
+                </p>
             </div>
         </a>
     </div>

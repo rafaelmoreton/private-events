@@ -13,3 +13,76 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+    background-color: rgb(186, 254, 246);
+}
+ 
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.event-item {
+    border: 3px solid black;
+    border-radius: 10px;
+    background-color: rgb(246, 194, 126);
+    width: 500px;
+}
+
+.event-item:hover {
+    background-color:rgb(249, 224, 192);
+}
+
+a {
+    text-decoration: none;
+    color: inherit
+}
+
+.link-grid {
+    display: grid;
+    padding: 20px;
+    grid-template-areas:
+    "title title"
+    "when-where creator";
+}
+
+.link-grid-item {
+    margin: 0
+}
+
+h3.link-grid-item {
+    margin-bottom: 40px;
+    text-align: center;
+    grid-area: title;
+}
+
+.when-where {
+    grid-area: when-where
+}
+
+.creator {
+    text-align: end;
+    grid-area: creator
+}
+
+.create-button {
+    background-color: rgb(33, 104, 117);
+    width: 300px;
+    height: 100px;
+    border: 10px solid rgb(246, 194, 126);
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    font-size: 2.3em;
+    font-weight: bold;
+}
+
+.create-button:hover {
+    cursor: pointer;
+    background-color: rgb(246, 194, 126);
+    color: rgb(0, 0, 0);
+    border: 10px solid rgb(33, 104, 117);
+    text-decoration: underline;
+}
