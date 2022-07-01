@@ -86,3 +86,35 @@ h3.link-grid-item {
     border: 10px solid rgb(33, 104, 117);
     text-decoration: underline;
 }
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    background-color: rgb(33, 104, 117);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    padding: 0 20px;
+}
+
+.header-link.left {
+    font-size: 1.8em;
+}
+
+.header-link.right {
+    display: flex;
+    gap: 10px;
+}
+
+.header-link.right > * {
+    background-color: rgb(246, 194, 126);
+    color: rgb(0, 0, 0);
+    padding: 8px;
+    border: 2px solid rgb(255, 100, 100);
+    border-radius: 5px;
+}
+
+.header-link.right > *:hover {
+    background-color: white;
+}
