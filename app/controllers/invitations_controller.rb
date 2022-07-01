@@ -10,7 +10,7 @@ class InvitationsController < ApplicationController
     if @invitation.save
        redirect_to event_path(params[:invitation][:event_id]), notice: "Event attendance confirmed"
     else
-       redirect_to event_path(params[:invitation][:event_id]), alert: "Couldn't attend the event"
+       redirect_to event_path(params[:invitation][:event_id]), notice: @invitation.errors[:attendee_id][0]
     end
   end
 
