@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   post 'invitations', to: 'invitations#create'
+  delete 'invitations/:id', to: 'invitations#destroy', as: :invitation_destroy
   post 'events', to: 'events#create'
   get 'events/new', to: 'events#new'
   get 'events/index', to: 'events#index'

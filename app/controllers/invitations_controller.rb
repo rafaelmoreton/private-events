@@ -5,18 +5,18 @@ class InvitationsController < ApplicationController
   def create
     @invitation = Invitation.new
     @invitation.attendee_id = current_user.id
-    @invitation.attended_event_id = params[:invitation][:event_id]
+    @invitation.attended_event_id = params[:event_id]
 
     if @invitation.save
-       redirect_to event_path(params[:invitation][:event_id]), notice: "Event attendance confirmed"
+       redirect_to event_path(params[:event_id]), notice: "Event attendance confirmed"
     else
-       redirect_to event_path(params[:invitation][:event_id]), notice: @invitation.errors[:attendee_id][0]
+       redirect_to event_path(params[:event_id]), notice: @invitation.errors[:attendee_id][0]
     end
   end
 
   private
 
   def store_location
-    session[:user_return_to] = event_url(params[:invitation][:event_id])
+    session[:user_return_to] = event_url(params[:event_id])
   end
 end

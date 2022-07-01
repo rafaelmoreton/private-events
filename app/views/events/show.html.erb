@@ -5,26 +5,10 @@
   <%= link_to "Edit", event_edit_path %>
 <% end %>
 
-<%= form_with(model: @invitation, data: { turbo: false }) do |form| %>
-  <% if @invitation.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(@invitation.errors.count, "error") %> prohibited this invitation from being saved:</h2>
+<%# ATTEND %>
+<%= button_to "Attend", @invitation, params: { event_id: @event.id } %>
 
-      <ul>
-        <% @invitation.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-    <div>
-        <%= form.hidden_field :event_id, value: @event.id %>
-    </div> <br>
-    <div>
-        <%= form.submit "Attend this event" %>
-    </div>
-<% end %>
+<%# CANCEL ATTENDANCE %>
 
 <p>Event from: <%= @event.creator.username %></p>
 <h3>Where: <%= @event.location %></h3>
