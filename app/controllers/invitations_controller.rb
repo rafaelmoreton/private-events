@@ -14,6 +14,13 @@ class InvitationsController < ApplicationController
     end
   end
 
+  def destroy
+    @invitation = Invitation.where("attendee_id = ? AND attended_event_id = ?", current_user.id, params[:event_id]).take
+    @invitation.destroy
+
+    redirect_to event_path
+  end
+
   private
 
   def store_location
