@@ -1,15 +1,19 @@
 <h1><%= @event.title %></h1>
 
-<% if current_user&.id == @event.creator_id %>
-  <%= button_to "Delete", @event, method: :delete %>
-  <%= link_to "Edit", event_edit_path %>
-<% end %>
+<%# EDIT AND DESTROY OWNED EVENT %>
+  <% if current_user&.id == @event.creator_id %>
+    <%= button_to "Delete", @event, method: :delete %>
+    <%= link_to "Edit", event_edit_path %>
+  <% end %>
+<%# ######### %>
 
-<%# ATTEND %>
-<%= button_to "Attend", @invitation, params: { event_id: @event.id } %>
-
-<%# CANCEL ATTENDANCE %>
-<%= button_to "Cancel Attendance", invitation_destroy_url, method: :delete, params: { event_id: @event.id } %>
+<%# ATTENDANCE %>
+  <% if user_signed_in? && @event.attendees.map(&:username).include?(current_user.username) %>
+    <%= button_to "Cancel Attendance", invitation_destroy_url, method: :delete, params: { event_id: @event.id } %>
+  <% else %>
+      <%= button_to "Attend", @invitation, params: { event_id: @event.id }, data: { turbo: false } %>
+  <% end %>
+<%# ######### %>
 
 <p>Event from: <%= @event.creator.username %></p>
 <h3>Where: <%= @event.location %></h3>

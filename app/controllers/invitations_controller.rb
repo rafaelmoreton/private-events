@@ -1,6 +1,6 @@
 class InvitationsController < ApplicationController
   before_action :store_location
-  before_action :authenticate_user!, only: %i[ create ]
+  before_action :authenticate_user!, only: %i[ create destroy ]
 
   def create
     @invitation = Invitation.new
@@ -16,7 +16,7 @@ class InvitationsController < ApplicationController
 
   def destroy
     @invitation = Invitation.where("attendee_id = ? AND attended_event_id = ?", current_user.id, params[:event_id]).take
-    @invitation.destroy
+    @invitation&.destroy
 
     redirect_to event_path
   end
