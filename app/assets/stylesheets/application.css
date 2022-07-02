@@ -14,6 +14,10 @@
  *= require_self
  */
 
+* {
+    font-family: 'Roboto';
+}
+
 body {
     background-color: rgb(186, 254, 246);
 }
