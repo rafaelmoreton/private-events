@@ -22,6 +22,10 @@ body {
     background-color: rgb(186, 254, 246);
 }
 
+.new_user {
+    width: 300px;
+}
+
 input, textarea {
     background-color: #e9e9ed;
     margin-top: 7px;
@@ -66,7 +70,7 @@ h1 {
     padding-bottom: 25px;
 }
 
-button, .submit-button {
+button, .submit-button, .alt-button {
     color: rgb(0, 0, 0);
     padding: 8px;
     border: 2px solid rgb(33, 104, 117);
@@ -82,6 +86,20 @@ button:hover, .submit-button:hover {
 
 button:hover:active, .submit-button:hover:active {
     background-color: #b1b1b9;
+}
+
+.submit-button {
+    width: 314px;
+}
+
+.alt-button {
+    background-color: rgb(33, 104, 117);
+    color: rgb(255, 255, 255);
+    width: 314px;
+    box-sizing: border-box;
+    margin-left: 12px;
+    margin-top: -8px;
+    text-align: center;
 }
 
 .owned-buttons {
