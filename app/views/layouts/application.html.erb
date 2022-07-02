@@ -19,11 +19,11 @@
       <div class="header-link left"><%= link_to "Events", root_path %></div>
       <div class="header-link right">
         <% if current_user %>
-            <%= link_to "#{current_user.username}", user_path(current_user.id) %>
-            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %>
+            <%= button_to "#{current_user.username}", user_path(current_user.id), method: :get %>
+            <%= button_to "Log out", destroy_user_session_path, method: :delete %>
           <% else %>
-            <%= link_to "Log in", new_user_session_path %>
-            <%= link_to "Sign up", new_user_registration_path %>
+            <%= button_to "Log in", new_user_session_path, method: :get  %>
+            <%= button_to "Sign up", new_user_registration_path, method: :get  %>
         <% end %>
       </div>
     </div>

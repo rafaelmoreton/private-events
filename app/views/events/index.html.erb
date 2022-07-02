@@ -1,5 +1,5 @@
 <h1>Events</h1>
-<div><%= button_to "Create Event", events_new_path, method: :get, class: "create-button" %></div>
+<div><%= button_to "New Event", events_new_path, method: :get, class: "create-button" %></div>
 
 <% @events.includes(:creator).each do |event| %>
     <div class="event-item">
