@@ -1,20 +1,62 @@
-<h1><%= @user.username %> events</h1>
+<h1><%= "#{@user.username}'s" %> events</h1>
 
 <h3>Created Events</h3>
 <% @user.events.each do |event| %>
-    <p>Title: <%= event.title %></p>
-    <p>Location: <%= event.location %></p>
+    <div class="event-item">
+        <a href="<%= event_url(event.id) %>">
+            <div class="link-grid">
+                <h3 class="link-grid-item">
+                    <%= event.title %>
+                </h3>
+                <p class="link-grid-item when-where">
+                    <b>When: </b><%= event.date %>
+                    <br>
+                    <b>Where: </b><%= event.location %>
+                </p>
+            </div>
+        </a>
+    </div>
 <% end %>
 
 <h3>Attended Events</h3>
 <h4>Future events</h4>
-<% @user.attended_events.future.each do |event| %>
-    <p>Title: <%= event.title %></p>
-    <p>Location: <%= event.location %></p>
+<% @user.attended_events.future.includes(:creator).each do |event| %>
+    <div class="event-item">
+        <a href="<%= event_url(event.id) %>">
+            <div class="link-grid">
+                <h3 class="link-grid-item">
+                    <%= event.title %>
+                </h3>
+                <p class="link-grid-item when-where">
+                    <b>When: </b><%= event.date %>
+                    <br>
+                    <b>Where: </b><%= event.location %>
+                </p>
+                <p class="creator">
+                    Creator: <%= event.creator.username %>
+                </p>
+            </div>
+        </a>
+    </div>
 <% end %>
 
 <h4>Past events</h4>
-<% @user.attended_events.past.each do |event| %>
-    <p>Title: <%= event.title %></p>
-    <p>Location: <%= event.location %></p>
+<% @user.attended_events.past.includes(:creator).each do |event| %>
+    <div class="event-item">
+        <a href="<%= event_url(event.id) %>">
+            <div class="link-grid">
+                <h3 class="link-grid-item">
+                    <%= event.title %>
+                </h3>
+                <p class="link-grid-item when-where">
+                    <b>When: </b><%= event.date %>
+                    <br>
+                    <b>Where: </b><%= event.location %>
+                </p>
+                <p class="creator">
+                    Creator: <%= event.creator.username %>
+                </p>
+            </div>
+        </a>
+    </div>
 <% end %>
