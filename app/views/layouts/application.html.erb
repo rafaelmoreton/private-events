@@ -20,9 +20,9 @@
       <div class="header-link right">
         <% if current_user %>
             <%= button_to "#{current_user.username}", user_path(current_user.id), method: :get %>
-            <%= button_to "Log out", destroy_user_session_path, method: :delete %>
+            <%= button_to "Logout", destroy_user_session_path, method: :delete %>
           <% else %>
-            <%= button_to "Log in", new_user_session_path, method: :get  %>
+            <%= button_to "Login", new_user_session_path, method: :get  %>
             <%= button_to "Sign up", new_user_registration_path, method: :get  %>
         <% end %>
       </div>
