@@ -17,6 +17,19 @@
 body {
     background-color: rgb(186, 254, 246);
 }
+
+input, textarea {
+    background-color: rgb(249, 224, 192);
+    margin-top: 7px;
+    width: 100%;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 1.2em;
+}
  
 .content {
     display: flex;
