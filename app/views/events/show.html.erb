@@ -1,31 +1,38 @@
+
 <h1><%= @event.title %></h1>
+<div class="event-content">
 
-<%# EDIT AND DESTROY OWNED EVENT %>
-  <% if current_user&.id == @event.creator_id %>
-    <%= button_to "Delete", @event, method: :delete %>
-    <%= link_to "Edit", event_edit_path %>
-  <% end %>
-<%# ######### %>
+  <div class="event-buttons">
+    <%# ATTENDANCE %>
+      <% if user_signed_in? && @event.attendees.map(&:username).include?(current_user.username) %>
+        <%= button_to "Cancel Attendance", invitation_destroy_url, method: :delete, params: { event_id: @event.id } %>
+      <% else %>
+          <%= button_to "Attend", @invitation, params: { event_id: @event.id }, data: { turbo: false } %>
+      <% end %>
+    <%# ######### %>
 
-<%# ATTENDANCE %>
-  <% if user_signed_in? && @event.attendees.map(&:username).include?(current_user.username) %>
-    <%= button_to "Cancel Attendance", invitation_destroy_url, method: :delete, params: { event_id: @event.id } %>
-  <% else %>
-      <%= button_to "Attend", @invitation, params: { event_id: @event.id }, data: { turbo: false } %>
-  <% end %>
-<%# ######### %>
+    <%# EDIT AND DESTROY OWNED EVENT %>
+      <div class="owned-buttons">
+        <% if current_user&.id == @event.creator_id %>
+          <%= button_to "Edit", event_edit_path(@event), method: :get %>
+          <%= button_to "Delete", @event, method: :delete %>
+        <% end %>
+      </div>
+    <%# ######### %>
+  </div>
 
-<p>Event from: <%= @event.creator.username %></p>
-<h3>Where: <%= @event.location %></h3>
-<h3>When: <%= @event.date %></h3>
-<h3>What: <%= @event.description %></h3>
-
-<h3>Attendees:</h3>
-
-<ul>
-  <% @event.attendees.each do |attendee| %>
-    <li><%= attendee.username %></li>
-  <% end %>
-</ul>
+  <b>Creator: </b><%= @event.creator.username %><br><br>
+  <b>Where: </b><%= @event.location %><br><br>
+  <b>When: </b><%= @event.date %><br><br>
+  <b>What: </b><%= @event.description %><br><br>
+  
+  <b>Attendees:</b>
+  
+  <ul>
+    <% @event.attendees.each do |attendee| %>
+      <li><%= attendee.username %></li>
+    <% end %>
+  </ul>
+</div>
 
 
